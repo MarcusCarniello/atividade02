@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Listar | Vetor Imóveis{% endblock %}
+
+{% block content %}
+<main>
+    <section class="container">
+        <div class="section-heading">
+            <h2>Clientes Cadastrados</h2>
+        </div>
+
+        {% if registros %}
+        <div class="table-responsive">
+            <table class="table table-dark table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>E-mail</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in registros %}
+                    <tr>
+                        <td>{{ r.id }}</td>
+                        <td>{{ r.nome }}</td>
+                        <td>{{ r.telefone }}</td>
+                        <td>{{ r.email }}</td>
+                        <td>{{ r.data_cadastro.strftime('%d/%m/%Y %H:%M') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-center">Nenhum registro cadastrado ainda.</p>
+        {% endif %}
+    </section>
+</main>
+{% endblock %}
